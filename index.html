@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todos</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <div id="tabs">
+      <button class="tab active" data-tab="todos">Todos</button>
+      <button class="tab" data-tab="trash">Trash</button>
+    </div>
+
+    <div id="panel-todos">
+      <div id="input-row">
+        <input id="new-todo" type="text" placeholder="Add a todo…" autocomplete="off" />
+      </div>
+      <ul id="todo-list"></ul>
+      <div id="empty-state">No todos yet</div>
+    </div>
+
+    <div id="panel-trash" hidden>
+      <ul id="trash-list"></ul>
+      <div id="trash-empty-state">Trash is empty</div>
+      <button id="empty-trash-btn" hidden>Empty Trash</button>
+    </div>
+  </div>
+  <script src="renderer.js"></script>
+</body>
+</html>
