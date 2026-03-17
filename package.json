@@ -5,10 +5,28 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
+    "build": "electron-builder --mac",
+    "build:dir": "electron-builder --mac dir",
     "start-bg": "nohup npm start > /dev/null 2>&1 &",
     "stop": "pkill -f \"electron .\" 2>/dev/null"
   },
-  "dependencies": {
-    "electron": "^28.0.0"
+  "build": {
+    "appId": "com.macos-todo.app",
+    "productName": "Todos",
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "directories": {
+      "output": "dist"
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.13.3"
   }
 }
