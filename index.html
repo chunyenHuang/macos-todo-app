@@ -8,10 +8,14 @@
 </head>
 <body>
   <div id="app">
-    <div id="tabs">
-      <button class="tab active" data-tab="todos">Todos</button>
-      <button class="tab" data-tab="trash">Trash</button>
-    </div>
+    <header id="header">
+      <div id="tabs">
+        <button class="tab active" data-tab="todos">Todos</button>
+        <button class="tab" data-tab="done">Done</button>
+        <button class="tab" data-tab="trash">Trash</button>
+      </div>
+      <button type="button" id="quit-btn" class="quit-btn" title="Quit Todos">Quit</button>
+    </header>
 
     <div id="panel-todos">
       <div id="input-row">
@@ -19,6 +23,11 @@
       </div>
       <ul id="todo-list"></ul>
       <div id="empty-state">No todos yet</div>
+    </div>
+
+    <div id="panel-done" hidden>
+      <ul id="done-list"></ul>
+      <div id="done-empty-state">Nothing completed yet</div>
     </div>
 
     <div id="panel-trash" hidden>

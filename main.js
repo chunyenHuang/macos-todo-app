@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Tray, ipcMain, nativeImage, nativeTheme } = require('electron');
+const { app, BrowserWindow, Tray, ipcMain, nativeImage, nativeTheme, shell } = require('electron');
 const path = require('path');
 const fs = require('fs');
 const zlib = require('zlib');
@@ -153,6 +153,20 @@ app.whenReady().then(() => {
   ipcMain.handle('save-todos', (_, data) => saveTodos(data));
   ipcMain.handle('update-badge', (_, count) => {
     tray.setTitle(count > 0 ? String(count) : '');
+  });
+
+  ipcMain.handle('quit-app', () => {
+    app.quit();
+  });
+
+  ipcMain.handle('open-external', async (_, url) => {
+    try {
+      const u = new URL(String(url));
+      if (u.protocol !== 'http:' && u.protocol !== 'https:') return;
+      await shell.openExternal(u.href);
+    } catch {
+      // ignore invalid URL
+    }
   });
 
   nativeTheme.on('updated', updateTrayIcon);
